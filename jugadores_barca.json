@@ -1,0 +1,94 @@
+
+
+[
+    {
+        "nombre": "Joan García",
+        "dorsal": 1,
+        "posicion": "Portero",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "João Cancelo",
+        "dorsal": 2,
+        "posicion": "Defensa",
+        "nacionalidad": "Portuguesa"
+    },
+    {
+        "nombre": "Alejandro Balde",
+        "dorsal": 3,
+        "posicion": "Defensa",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Pau Cubarsí",
+        "dorsal": 5,
+        "posicion": "Defensa",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Gavi",
+        "dorsal": 6,
+        "posicion": "Centrocampista",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Fermín López",
+        "dorsal": 7,
+        "posicion": "Centrocampista",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Pedri",
+        "dorsal": 8,
+        "posicion": "Centrocampista",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Gabriel Jesus",
+        "dorsal": 9,
+        "posicion": "Delantero",
+        "nacionalidad": "Brasileña"
+    },
+    {
+        "nombre": "Lamine Yamal",
+        "dorsal": 10,
+        "posicion": "Delantero",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Raphinha",
+        "dorsal": 11,
+        "posicion": "Delantero",
+        "nacionalidad": "Brasileña"
+    },
+    {
+        "nombre": "Dani Olmo",
+        "dorsal": 20,
+        "posicion": "Centrocampista",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Frenkie de Jong",
+        "dorsal": 21,
+        "posicion": "Centrocampista",
+        "nacionalidad": "Neerlandesa"
+    },
+    {
+        "nombre": "Marc Bernal",
+        "dorsal": 22,
+        "posicion": "Centrocampista",
+        "nacionalidad": "Española"
+    },
+    {
+        "nombre": "Jules Koundé",
+        "dorsal": 23,
+        "posicion": "Defensa",
+        "nacionalidad": "Francesa"
+    },
+    {
+        "nombre": "Eric García",
+        "dorsal": 24,
+        "posicion": "Defensa",
+        "nacionalidad": "Española"
+    }
+]

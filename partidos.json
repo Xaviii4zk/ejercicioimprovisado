@@ -1,0 +1,36 @@
+[
+    {
+    "ResultadoFinal": "2-2",
+    "local": "Galatasaray",
+    "visitante": "Barça",
+    "porra": [
+            {
+                "nombre": "Elena",
+                "Resultado": "3-1"
+            }
+        ]
+    },
+    {
+    "ResultadoFinal": "2-2",
+    "local": "Atletico Madrid",
+    "visitante": "Manchester United",
+    "porra": [
+            {
+                "nombre": "Elena",
+                "Resultado": "3-1"
+            }
+        ]
+    },
+    {
+    "ResultadoFinal": "2-2",
+    "local": "Villareal",
+    "visitante": "Napoli",
+    "porra": [
+            {
+                "nombre": "Elena",
+                "Resultado": "3-1"
+            }
+        ]
+    }
+]
+

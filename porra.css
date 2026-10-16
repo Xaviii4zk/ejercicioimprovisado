@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    margin: 0 auto;
+}
+
+.Partidoos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    margin: auto;
+    padding: 30px;
+    width: 400px;
+}
+
+.Partidoos span {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+
+.Pronostico {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 500px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.Nombre {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.Nombre input {
+    height: 25px;
+    flex: 1;
+}
+
+.Resultados {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    gap: 20px;
+}
+
+.Resultados div {
+    flex: 1;
+}
+
+.Resultados input {
+    width: 100%;
+    height: 80px;
+    font-size: 40px;
+    text-align: center;
+}
+
+.Resultados h3 {
+    margin-top: 10px;
+}
+
+.Enviar {
+    background-color: #004D98;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.Enviar:hover {
+    background-color: #A50044;
+}
