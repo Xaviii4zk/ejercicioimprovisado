@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.relativo {
+    position: relative;
+    background-color: red;
+    width: 600px;
+}
+
+.relativo img {
+    align-items: left;
+}
+
+.absoluto {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+}
+
+.ficha {
+    border-radius: 100px;
+}
+
+.ficha {
+    width: 20px;
+    position: absolute;
+}
+
+.fichaB {
+    width: 20px;
+    border-radius: 100px;
+    transform: translateX(105px) translateY(-155px);
+    position: absolute;
+}
+
+
+/*tablero position 1
+
+63px -20px
+70px -65px
+75 -115px;
+
+
+
+position b
+90px -60px
+100px -110px
+75px -100px
+
