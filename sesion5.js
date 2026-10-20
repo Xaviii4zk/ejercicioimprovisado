@@ -35,7 +35,9 @@ const valors = Object.values(jugador1);
 console.log(valors);
 let i=0;
 for (const [clau, valor] of Object.entries(jugador1)) {
-  ObjectoInfo.innerHTML=`<div>${i}: ${clau}: ${valor}</div>`;
-  i++;
+    if (typeof valor !== "function") {
+        ObjectoInfo.innerHTML += `<div>${i}: ${clau}: ${valor}</div>`;
+        i++;
+    }
 }
 
