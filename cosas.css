@@ -1,0 +1,158 @@
+* {
+    box-sizing: border-box;
+}
+
+
+.x {
+    width: 100%;
+    background-color: rgba(85, 24, 184, 0.74);
+    transition: transform 0.5s;
+}
+
+.f {
+    width: 100%;
+    background-color: rgba(75, 184, 24, 0.74);
+    transition: transform 0.5s;
+}
+
+.z {
+    width: 100%;
+    background-color: rgba(24, 173, 184, 0.74);
+    transition: transform 0.5s;
+    box-shadow: 0 0 20px rgba(24, 173, 184, 0.45);
+}
+
+.x:hover {
+    transform: rotate(45deg);
+}
+.f:hover {
+    transform: translateY(10px);
+}
+
+.z:hover {
+    transform: scale(1.5);
+    box-shadow: rgba(226, 67, 18, 0.575);
+
+}
+
+.p {
+    width: 100%;
+    background-color: rgba(75, 184, 24, 0.74);
+    transition: transform 3s;
+    box-shadow: 0 0 20px rgba(64, 238, 12, 0.45);
+}
+
+.p:hover {
+    transform: rotate(45deg) translateY(10px) scale(1.5) skew(30deg);
+}
+
+.imagen {
+    transition: transform 3s;
+
+}
+
+.imagen img {
+    width: 600px;
+    height: 300px;
+}
+
+.imagen:hover {
+    translate: z;
+    translate: 3d (translateX(100px)(translateY(100px)));
+}
+
+.dosdivs {
+    position: relative;
+    width: 400px;
+    height: 200px;
+    display: flex;
+    overflow: hidden;
+}
+
+.dosdivs button {
+    margin-top: 20px;
+    width: 304px;
+    height: 56px;
+    background-color: rgb(23, 213, 255);
+    color: rgb(10, 14, 18);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: space-around;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    font-weight: bold;
+    font-size: 17px;
+    gap: 110px;
+    margin-bottom: 30px;
+    border: none;
+}
+
+.divizq {
+    width: 100px;
+    position: absolute;
+    background-color: red;
+    left:250px;
+    
+}
+
+.dosdivs button:hover {
+    cursor: pointer;
+}
+
+.dosdivs i:hover {
+    transform: translateX(200px);
+    transition: transform 3s;
+
+}
+
+.container {
+    width: 100px;
+    height: 50px;
+    overflow: hidden;
+    background-color: rgba(0,0,255,1);
+    border-radius: 10px;
+    position: relative;
+}
+
+.container:hover.claro {
+    transform: translateX(0);
+    transition: 0.5s;
+}
+
+.claro {
+    background-color: rgba(0,0,255,0.7);
+    transform: translateX(-100%);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.5s;
+    border-radius: 10px;
+    position:absolute;
+}
+
+.texto {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+    top: 0; /* Dependiendo del navegador top:0 se pone para poder ponerlo encima
+    del otro div texto encima de claro */
+}
+
+
+/* Hay que poner otro div */
+
+/* ROTATE GIRA unos cuantos grados, 
+TRANSLATE sube o baja, 
+scale lo hace más grande en otra escala mayor o menor
+y skew lo gira estilo estirado (ns cómo describirlo) */
