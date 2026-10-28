@@ -150,9 +150,131 @@
 }
 
 
+.container-flecha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+.flecha {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.flecha i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Primera flecha visible */
+.flecha i:first-child {
+    transform: translateX(0);
+}
+
+/* Segunda flecha escondida */
+.flecha i:last-child {
+    transform: translateX(-200%);
+}
+
+/* La primera se va */
+.container:hover .flecha i:first-child {
+    transform: translateX(200%);
+    transition-delay: 0s;
+}
+
+/* La segunda aparece después */
+.container:hover .flecha i:last-child {
+    transform: translateX(0);
+    transition-delay: 0.30s;
+}
+
+.claseCuadrado {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    transition: 0.5s;
+}
+
+
+.claseCuadrado:hover {
+    transform: scale(1.5);
+    transition: 1s background-color;
+    background-color: green;
+    transition: 10s transform ease (linear);
+}
+
+
+body:hover .claseCuadrado {
+    transform: translate(500px);
+    transition: 3s transform ease (linear);
+}
+
+
+.reloj {
+    margin-top: 150px;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-image: url("Albert-Einstein-1947.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.agujagrande {
+    position: absolute;
+    width: 10px;
+    height: 80px;
+    background-color: aqua;
+    top: 30px;
+    left: 95px;
+
+    transform-origin: center bottom;
+    animation: girar 60s linear infinite;
+}
+
+.agujapeque {
+    position: absolute;
+    width: 10px;
+    height: 70px;
+    background-color: brown;
+    top: 20px;
+    left: 95px;
+
+    transform-origin: center bottom;
+    animation: girar 360s linear infinite;
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 /* Hay que poner otro div */
 
 /* ROTATE GIRA unos cuantos grados, 
 TRANSLATE sube o baja, 
 scale lo hace más grande en otra escala mayor o menor
-y skew lo gira estilo estirado (ns cómo describirlo) */
+y skew lo gira estilo estirado (ns cómo describirlo)
+
+
+Hay que meter una imagen y se desplaza uno y
+se va otro (se puede usar position base o algo así) una 50 o la otra 100%
+o 0.*/

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkanoid</title>
+    <style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    header {
+        height: 100px;
+        background-color: brown;
+        color: white;
+    }
+
+    main {
+        background-color: aliceblue;
+        height: calc(100vh - 150px);
+    }
+
+    footer {
+        height: 50px;
+        background-color: brown;
+    }
+
+    .bola {
+        width: 50px;
+        height: 50px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+        top: 450px;
+        left: 0;
+    }
+
+    .pala {
+        width: 200px;
+        height: 50px;
+        background-color: red;
+        border-radius: 5%;
+        position: absolute;
+        bottom: 60px;
+        left: 450px;
+    }
+
+    .tablero {
+        position: relative;
+    }
+
+</style>
+</head>
+<body>
+    <header> 
+        <h1>Juego del Arkanoid</h1>
+
+    </header>
+    <main class="tablero">
+        <div class="bola">
+
+        </div>
+        <div class="pala">
+
+        </div>
+    </main>
+    <footer>
+        <button class="Control">Parar el juego</button>
+    </footer>
+    <script>
+    const bola = {
+        posX: 470,
+        posY: 220,
+        veloX: -5,
+        veloY: -5,
+    }
+
+    const pala = {
+        posX: 450,
+        veloX: 10,
+    }
+    const Control = document.querySelector(".Control");
+    const divTablero = document.querySelector(".tablero");
+    const divPala = document.querySelector('.pala');
+    const divBola = document.querySelector(".bola");
+    console.log(divBola);
+
+    let iniciado = false;
+    let pausado = false;
+
+    const timer = setInterval(() => {
+        if (!iniciado || pausado) return;
+        bola.posX = bola.posX + bola.veloX
+        console.log(bola.posX)
+        divBola.style.left = bola.posX + "px";
+        if (bola.posX > divTablero.offsetWidth - 50) bola.veloX = bola.veloX * -1
+        if (bola.posX < 1) bola.veloX = bola.veloX * -1
+
+        if (
+            bola.posY + 40 >= divPala.offsetTop &&
+            bola.posX + 30 >= pala.posX &&
+            bola.posX <= pala.posX + divPala.offsetWidth
+        ) {
+            bola.veloY = bola.veloY * -1;
+        }
+        
+        bola.posY = bola.posY + bola.veloY
+        console.log(bola.posY)
+        divBola.style.top = bola.posY + "px";
+        if (bola.posY > divTablero.offsetHeight - 51) bola.veloY = bola.veloY * -1
+        if (bola.posY < 1) bola.veloY = bola.veloY * -1
+    }, 20)
+
+    document.querySelector(".Control").addEventListener('click', () => {
+        pausado = !pausado;
+        if (pausado) {
+            Control.innerHTML = "Reanudar el juego";
+        } else {
+            Control.innerHTML = "Parar el juego";
+        }
+
+    });
+
+
+
+    
+
+    // Si pega arriba velX =0 velY=1 (si pega en el medio)
+    // Pega en la derehca del todo, velx=1 velY=0
+    // Si pega en el medio de la derecha velX=1 velY=1
+    // 
+
+    document.addEventListener("keydown", (e) => {
+        if (pausado) return;
+
+        if (e.key === "ArrowRight") {
+            pala.posX += pala.veloX;
+        }
+
+        if (e.key === "Enter") {
+            iniciado = true;
+        }
+
+        if (e.key === "ArrowLeft") {
+            pala.posX -= pala.veloX;
+        }
+
+
+        if (pala.posX < 0) {
+            pala.posX = 0
+        }
+
+        if (pala.posX > divTablero.offsetWidth - divPala.offsetWidth) {
+            pala.posX = divTablero.offsetWidth - divPala.offsetWidth;
+        }
+
+
+        divPala.style.left = pala.posX + "px";
+    });
+        
+    </script>
+</body>
+</html>
