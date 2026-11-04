@@ -5,51 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arkanoid</title>
     <style>
-
     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
     }
-    
-    header {
-        height: 100px;
-        background-color: brown;
+
+    body {
+        background-color: #080d1b;
+        font-family: Arial, sans-serif;
         color: white;
     }
 
+    header {
+        height: 100px;
+        background: linear-gradient(90deg, #111b38, #172c55);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 2px solid #00e5ff;
+        box-shadow: 0 4px 20px rgba(0, 229, 255, 0.2);
+    }
+
+    header h1 {
+        font-size: 32px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-shadow: 0 0 15px #00e5ff;
+    }
+
     main {
-        background-color: aliceblue;
+        background: radial-gradient(circle, #17294b, #080d1b);
         height: calc(100vh - 150px);
-    }
-
-    footer {
-        height: 50px;
-        background-color: brown;
-    }
-
-    .bola {
-        width: 50px;
-        height: 50px;
-        background-color: red;
-        border-radius: 50%;
-        position: absolute;
-        top: 450px;
-        left: 0;
-    }
-
-    .pala {
-        width: 200px;
-        height: 50px;
-        background-color: red;
-        border-radius: 5%;
-        position: absolute;
-        bottom: 60px;
-        left: 450px;
+        overflow: hidden;
     }
 
     .tablero {
         position: relative;
+        width: 1900px;
+        margin: 0 auto;
+        border-left: 2px solid #00e5ff;
+        border-right: 2px solid #00e5ff;
+        border-bottom: 2px solid #00e5ff;
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+    }
+
+
+    .bola {
+        width: 50px;
+        height: 50px;
+        background: radial-gradient(circle at 30% 30%, white, #00e5ff 50%, #0077ff);
+        border-radius: 50%;
+        position: absolute;
+        top: 600px;
+        left: 920px;
+        box-shadow: 0 0 15px #00e5ff, 0 0 35px rgba(0, 229, 255, 0.6);
+    }
+
+    .pala {
+        width: 200px;
+        height: 20px;
+        background: linear-gradient(90deg, #00e5ff, #008cff);
+        border-radius: 15px;
+        position: absolute;
+        bottom: 60px;
+        left: 850px;
+        box-shadow: 0 0 15px #00e5ff, 0 0 30px rgba(0, 229, 255, 0.5);
+    }
+
+    footer {
+        height: 50px;
+        background-color: #111b38;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        border-top: 1px solid #263c63;
+    }
+
+    .Control {
+        background: linear-gradient(90deg, #00c6ff, #0072ff);
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 0 12px rgba(0, 198, 255, 0.3);
+    }
+
+    .Control:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 20px #00c6ff;
+    }
+
+    .NuevaPartida {
+        display: none;
+        background: linear-gradient(90deg, #00e5ff, #0072ff);
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .NuevaPartida:hover {
+        transform: scale(1.08);
+        box-shadow: 0 0 15px #00e5ff;
+    }
+
+    #cajas {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .cajas {
+        margin-left: 2px;
+        width: 170px;
+        height: 100px;
+        flex-shrink: 0;
+        background-color: red;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
 </style>
@@ -57,61 +144,136 @@
 <body>
     <header> 
         <h1>Juego del Arkanoid</h1>
-
     </header>
     <main class="tablero">
+        <div id="cajas">
+            <h1>h</h1>
+        </div>
         <div class="bola">
 
         </div>
         <div class="pala">
 
         </div>
+        <div class="mensaje">
+
+        </div>
     </main>
     <footer>
         <button class="Control">Parar el juego</button>
+        <button class="NuevaPartida">Nueva partida</button>
     </footer>
     <script>
     const bola = {
-        posX: 470,
-        posY: 220,
+        posX: 850,
+        posY: 600,
         veloX: -5,
         veloY: -5,
     }
 
     const pala = {
-        posX: 450,
+        posX: 850,
         veloX: 10,
     }
     const Control = document.querySelector(".Control");
     const divTablero = document.querySelector(".tablero");
     const divPala = document.querySelector('.pala');
     const divBola = document.querySelector(".bola");
+    const NuevaPartida = document.querySelector(".NuevaPartida");
+    let Cajas = document.querySelector('#cajas');
+    let contenido="";
+    let ArrayEnemigos = [ "Caja_1", "Caja_2", "Caja_3", "Caja_4", "Caja_5",
+    "Caja_6", "Caja_7", "Caja_8", "Caja_9", "Caja_10", 
+    "Caja_11", "Caja_12", "Caja_13", "Caja_14", "Caja_15", 
+    "Caja_16", "Caja_17", "Caja_18", "Caja_19", "Caja_20",
+    "Caja_21", "Caja_22", "Caja_23", "Caja_24", "Caja_25",
+    "Caja_26", "Caja_27", "Caja_28", "Caja_29", "Caja_30",
+    ];
+    let m=30;
+    let n=0;
+    for (n=0; n < ArrayEnemigos.length ;n++) {
+        contenido+=`<div class="cajas">${ArrayEnemigos[n]}</div>`;
+    }
+    Cajas.innerHTML=contenido;
+    Cajas.style.display="flex";
+    let cajasHTML = document.querySelectorAll('.cajas');
     console.log(divBola);
+    divBola.style.display="block";
 
     let iniciado = false;
     let pausado = false;
 
     const timer = setInterval(() => {
         if (!iniciado || pausado) return;
+        let posXAnterior = bola.posX;
+        let posYAnterior = bola.posY;
         bola.posX = bola.posX + bola.veloX
         console.log(bola.posX)
         divBola.style.left = bola.posX + "px";
         if (bola.posX > divTablero.offsetWidth - 50) bola.veloX = bola.veloX * -1
         if (bola.posX < 1) bola.veloX = bola.veloX * -1
 
+
         if (
-            bola.posY + 40 >= divPala.offsetTop &&
-            bola.posX + 30 >= pala.posX &&
-            bola.posX <= pala.posX + divPala.offsetWidth
+            bola.posY + 50 >= divPala.offsetTop &&
+            bola.posY < divPala.offsetTop &&
+            bola.veloY > 0 &&
+            bola.posX + 50 > pala.posX &&
+            bola.posX < pala.posX + divPala.offsetWidth
         ) {
-            bola.veloY = bola.veloY * -1;
+            let impacto = (bola.posX + 25) - pala.posX;
+
+            let Vx = (impacto / 200 - 0.5) * 2;
+
+            if (Vx > 0.9) Vx = 0.9;
+            if (Vx < -0.9) Vx = -0.9;
+
+            let Vy = Math.sqrt(1 - Vx * Vx);
+
+            bola.veloX = Vx * 5;
+            bola.veloY = -Vy * 5;
         }
-        
-        bola.posY = bola.posY + bola.veloY
-        console.log(bola.posY)
-        divBola.style.top = bola.posY + "px";
-        if (bola.posY > divTablero.offsetHeight - 51) bola.veloY = bola.veloY * -1
+            bola.posY = bola.posY + bola.veloY
+            console.log(bola.posY)
+            divBola.style.top = bola.posY + "px";
+
+        if (bola.posY > divTablero.offsetHeight - 51) 
+        {
+            pausado = !pausado;
+            divBola.style.display="none";
+            NuevaPartida.style.display = "block";
+
+        }
         if (bola.posY < 1) bola.veloY = bola.veloY * -1
+        for (n=0; n < cajasHTML.length; n++) {
+            if (cajasHTML[n].style.visibility == "hidden") continue;
+
+            if (
+                bola.posX + 50 >= cajasHTML[n].offsetLeft &&
+                bola.posX <= cajasHTML[n].offsetLeft + cajasHTML[n].offsetWidth &&
+                bola.posY + 50 >= cajasHTML[n].offsetTop &&
+                bola.posY <= cajasHTML[n].offsetTop + cajasHTML[n].offsetHeight
+            ) {
+                let impacto = (bola.posX + 25) - cajasHTML[n].offsetLeft;
+
+                let Vx = (impacto / cajasHTML[n].offsetWidth - 0.5) * 2;
+
+                if (Vx > 0.9) Vx = 0.9;
+                if (Vx < -0.9) Vx = -0.9;
+
+                let Vy = Math.sqrt(1 - Vx * Vx);
+
+                bola.veloX = Vx * 7;
+                bola.veloY = -Vy * 7;
+
+                bola.posY = cajasHTML[n].offsetTop + cajasHTML[n].offsetHeight;
+                divBola.style.top = bola.posY + "px";
+                divBola.style.left = bola.posX + "px";
+
+                cajasHTML[n].style.visibility = "hidden";
+
+            }
+        }
     }, 20)
 
     document.querySelector(".Control").addEventListener('click', () => {
@@ -123,15 +285,6 @@
         }
 
     });
-
-
-
-    
-
-    // Si pega arriba velX =0 velY=1 (si pega en el medio)
-    // Pega en la derehca del todo, velx=1 velY=0
-    // Si pega en el medio de la derecha velX=1 velY=1
-    // 
 
     document.addEventListener("keydown", (e) => {
         if (pausado) return;
@@ -160,7 +313,29 @@
 
         divPala.style.left = pala.posX + "px";
     });
-        
+
+    NuevaPartida.addEventListener("click", () => {
+        bola.posX = 920;
+        bola.posY = 600;
+        bola.veloX = -5;
+        bola.veloY = -5;
+
+        pala.posX = 850;
+
+        divBola.style.display = "block";
+        divPala.style.display = "block";
+
+        divBola.style.left = bola.posX + "px";
+        divBola.style.top = bola.posY + "px";
+        divPala.style.left = pala.posX + "px";
+
+        NuevaPartida.style.display = "none";
+
+        iniciado = false;
+        pausado = false;
+
+        Control.innerHTML = "Parar el juego";
+    });
     </script>
 </body>
 </html>
