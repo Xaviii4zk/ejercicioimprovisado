@@ -122,7 +122,6 @@
 
     #cajas {
         display: flex;
-        gap: 20px;
         flex-wrap: wrap;
     }
 
@@ -132,7 +131,6 @@
         height: 100px;
         flex-shrink: 0;
         background-color: red;
-        border-radius: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -167,13 +165,13 @@
     const bola = {
         posX: 850,
         posY: 600,
-        veloX: -5,
-        veloY: -5,
+        veloX: -7,
+        veloY: -7,
     }
 
     const pala = {
         posX: 850,
-        veloX: 10,
+        veloX: 15,
     }
     const Control = document.querySelector(".Control");
     const divTablero = document.querySelector(".tablero");
@@ -230,8 +228,8 @@
 
             let Vy = Math.sqrt(1 - Vx * Vx);
 
-            bola.veloX = Vx * 5;
-            bola.veloY = -Vy * 5;
+            bola.veloX = Vx * 7;
+            bola.veloY = -Vy * 7;
         }
             bola.posY = bola.posY + bola.veloY
             console.log(bola.posY)
@@ -254,24 +252,52 @@
                 bola.posY + 50 >= cajasHTML[n].offsetTop &&
                 bola.posY <= cajasHTML[n].offsetTop + cajasHTML[n].offsetHeight
             ) {
-                let impacto = (bola.posX + 25) - cajasHTML[n].offsetLeft;
+                let izquierda = cajasHTML[n].offsetLeft;
+                let derecha = izquierda + cajasHTML[n].offsetWidth;
+                let arriba = cajasHTML[n].offsetTop;
+                let abajo = arriba + cajasHTML[n].offsetHeight;
 
-                let Vx = (impacto / cajasHTML[n].offsetWidth - 0.5) * 2;
+                let choqueX = Math.min(
+                    bola.posX + 50,
+                    derecha
+                ) - Math.max(
+                    bola.posX,
+                    izquierda
+                );
 
-                if (Vx > 0.9) Vx = 0.9;
-                if (Vx < -0.9) Vx = -0.9;
+                let choqueY = Math.min(
+                    bola.posY + 50,
+                    abajo
+                ) - Math.max(
+                    bola.posY,
+                    arriba
+                );
 
-                let Vy = Math.sqrt(1 - Vx * Vx);
+                if (choqueX < choqueY) {
+                    if (bola.veloX > 0) {
+                        bola.posX = izquierda - 50;
+                    } else {
+                        bola.posX = derecha;
+                    }
 
-                bola.veloX = Vx * 7;
-                bola.veloY = -Vy * 7;
+                    bola.veloX = bola.veloX * -1;
 
-                bola.posY = cajasHTML[n].offsetTop + cajasHTML[n].offsetHeight;
-                divBola.style.top = bola.posY + "px";
-                divBola.style.left = bola.posX + "px";
+                } else {
+                    if (bola.veloY > 0) {
+                        bola.posY = arriba - 50;
+                    } else {
+                        bola.posY = abajo;
+                    }
+
+                    bola.veloY = bola.veloY * -1;
+                }
 
                 cajasHTML[n].style.visibility = "hidden";
 
+                divBola.style.left = bola.posX + "px";
+                divBola.style.top = bola.posY + "px";
+
+                break;
             }
         }
     }, 20)

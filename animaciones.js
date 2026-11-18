@@ -6,9 +6,9 @@ let retroceder = document.querySelector('.retroceder');
 
 let posiciones = [
     { casilla: 0, ficha: { A: {X:63, y:-20},  B:{X:90,  y:-60} } },
-    { casilla: 1, ficha: { A: {X:70, y:-65},  B:{X:100, y:-105} } },
-    { casilla: 2, ficha: { A: {X:75, y:-115}, B:{X:105, y:-155} } },
-    { casilla: 3, ficha: { A: {X:80, y:-155}, B:{X:160, y:-160} } },
+    { casilla: 1, ficha: { A: {X:70, y:-65},  B:{X:95, y:-80} } },
+    { casilla: 2, ficha: { A: {X:75, y:-115}, B:{X:100, y:-100} } },
+    { casilla: 3, ficha: { A: {X:80, y:-155}, B:{X:160, y:-1} } },
     { casilla: 4, ficha: { A: {X:85, y:-200}, B:{X:220, y:-160} } },
     { casilla: 5, ficha: { A: {X:90, y:-240}, B:{X:280, y:-160} } },
     { casilla: 6, ficha: { A: {X:100, y:-310}, B:{X:340, y:-160} } },
